@@ -1,0 +1,161 @@
+@import "component/header.scss";
+@import "component/footer.scss";
+@import "component/reset.scss";
+@import "component/indexList1.scss";
+
+.container{
+	width: 100%;
+	height: auto;
+	//定制活动专区
+	.custom-made{
+		@include center;
+		margin-top: 38px;
+		width: $miWidth;
+		height: auto;
+		ul{
+			width: $miWidth;
+			height: 315px;
+			li{
+				position: relative;
+				float: left;
+				margin-right: 15px;
+				width: 290px;
+				height: 315px;
+				a{
+					display: inline-block;
+					width: 290px;
+					height: 315px;
+					.content{
+						position: absolute;
+						top: 186px;
+						left: 38px;
+						width: 218px;
+						height: 100px;
+						padding: 5px;
+						border: 5px solid rgba(255,255,255,.6);
+						div{
+							width: 198px;
+							height: 80px;
+							background: rgba(255,255,255,.6);
+							text-align:  center;
+							h3{
+								padding-top: 16px;
+								padding-bottom: 6px;
+								@include center;
+								width: 186px;
+								color: #575757;
+								border-bottom: 2px dotted #020202;
+							}
+							span{
+								font-size: 12px;
+								color: #575757;
+							}
+						}
+					}
+				}
+				
+				&:nth-child(1){
+					background: url(/images/pro_hd_01.jpg) no-repeat;
+				}
+				&:nth-child(2){
+					background: url(/images/pro_hd_02.jpg) no-repeat;
+				}
+				&:nth-child(3){
+					background: url(/images/pro_hd_03.jpg) no-repeat;
+				}
+				&:nth-child(4){
+					background: url(/images/pro_hd_7.jpg) no-repeat;
+				}
+			}
+			
+		}
+	}
+	//最新活动
+	.activity{
+		@include center;
+		margin-top: 16px;
+		margin-bottom: 20px;
+		width: $miWidth;
+		height: 465px;
+
+		.first-order{
+			width: 700px;
+			height: 465px;
+			float: left;
+			//新人专享
+			.new-exclusive{
+				width: 700px;
+				height: 226px;
+				img{
+					width: 700px;
+					height: 226px;
+				}
+			}
+			//特色预定
+			.feature-book{
+				width: 700px;
+				height: 226px;
+				margin-top: 10px;
+				img{
+					width: 700px;
+					height: 226px;
+				}
+			}
+		}
+		//本周预定
+		.this-week{
+			float: right;
+			width: 500px;
+			height: 465px;
+			header{
+				height: 70px;
+				background-color: #a1d22b;
+				text-align: center;
+			}
+			div{
+				width: 502px;
+				margin-top: 10px;
+				height: 388px;
+				artical{
+					width: 390px;
+					height: 388px;
+					float: left;
+					ul{
+						width: 390px;
+						height: 385px;
+						li{
+							position: absolute;
+							display: none;
+							img{
+								width: 390px;
+								height: 385px;
+							}
+							&.ac{
+								display: block;
+								z-index: 5;
+							}
+						}
+					}
+				}
+				aside{
+					float: right;
+					ul{
+						width: 92px;
+						height: 388px;
+						li{
+							margin-bottom: 6px;
+							height: 92px;
+							img{
+								height: 90px;
+								width: 90px;
+							}
+							&.ac{
+								border: 1px solid #a1d22b;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

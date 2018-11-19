@@ -1,0 +1,73 @@
+<div id="listWrap" class="list-wrap">
+<header id="listSelect">
+	<dl>
+		<dt>排序：</dt>
+		<dd>价格<span></span></dd>
+	</dl>
+	<dl>
+		<dt>筛选：</dt>
+		<dd>
+			<input id="minPrice" type="text" name="minprice" placeholder="￥">
+			-
+			<input id="maxPrice" type="text" name="maxprice" placeholder="￥">
+		</dd>
+	</dl>
+	<ul>
+		<li>
+			<input id="discounts" type="checkbox" name="discounts">
+			<span>限时优惠</span>
+		</li>
+		<li>
+			<input id="newPro" type="checkbox" name="newpro">
+			<span>新品上市</span>
+		</li>
+	</ul>
+	<div id="listSearch" class="list-search">
+		<input type="text" name="listsearch" placeholder="请输入商品名称！">
+		<input type="button" name="listsearchbtn" value="搜索">
+	</div>
+</header>
+<div id="listContainer" class="list-container">
+	<ul id="prolist">
+	</ul>
+	<script type="text/html" id="pro-template">
+		{{each products item i}}
+			<li>
+				<div class="proId">{{item.id}}</div>
+				<dl>
+					<dt class="proImg">
+						<a href="/html/detail.html?id={{item.id}}" target="_black">
+							<img src="{{item.img}}">
+						</a>
+					</dt>
+					<dd>
+						<em>
+							<img src="/images/ygzm.png">
+						</em>
+						<a href="javascript:;">
+							<em class="proName">{{item.proname}}</em>
+							<i class="proInfo">  {{item.proinfo}}</i>
+						</a>
+						<div>
+							<b>￥<em class="bazaarprice">{{item.bazaarprice}}</em></b>
+							<i>已有<a href="javascript:;">334+</a>人购买</i>
+						</div>
+					</dd>
+				</dl>
+				<div class="to-cart">
+					<input type="button" name="tocart" value="加入购物车">
+				</div>
+			</li>
+		{{/each}}
+	</script>
+</div>
+<footer class="list-total">
+	<div>
+		<i>第<em>1</em>/<span>3</span>页</i>
+		<input id="homepage" type="button" name="homepage" value="首页">
+		<input id="prevpage" type="button" name="prevpage" value="上一页">
+		<input id="nextpage" type="button" name="nextpage" value="下一页">
+		<input id="endpage" type="button" name="endpage" value="尾页">
+	</div>
+</footer>
+</div>

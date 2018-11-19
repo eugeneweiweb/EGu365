@@ -1,0 +1,11 @@
+require(["config"],function(){
+	require(["jquery","template","cookie","header","footer"],function($,template,cookie,header,footer){
+		$("#header").load("/html/component/header.html",function(){
+			header.nav();
+			header.banner();
+			header.cookie();
+			header.shopNum();
+		});
+		$("#footer").load("/html/component/footer.html");
+	});
+})

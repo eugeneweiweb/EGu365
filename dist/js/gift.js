@@ -1,0 +1,1 @@
+"use strict";require(["config"],function(){require(["jquery","template","cookie","header","footer"],function(e,o,t,n,r){e("#header").load("/html/component/header.html",function(){n.nav(),n.banner(),n.cookie(),n.shopNum()}),e("#footer").load("/html/component/footer.html")})});

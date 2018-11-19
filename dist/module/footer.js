@@ -1,0 +1,1 @@
+"use strict";define(["jquery"],function(t){function n(){}return n.prototype.one=function(){},n.prototype.two=function(){},n.prototype.three=function(){},new n});

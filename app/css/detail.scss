@@ -1,0 +1,366 @@
+@import "component/header.scss";
+@import "component/footer.scss";
+@import "component/reset.scss";
+$mainColor:#fd7400;
+$miWidth: 1220px;
+$maWidth: 1348px;
+@mixin center{
+	margin-left: auto;
+	margin-right: auto;
+}
+@mixin mainPadding{
+	padding-left: 65px;
+	padding-right: 65px;
+}
+@mixin mainMargin{
+	margin-left: 65px;
+	margin-right: 65px;
+}
+
+.container{
+	width: $miWidth;
+	@include center;
+	height: 800px;
+	.pro-detail{
+		padding: 10px;
+		width: $miWidth;
+		height: 630px;
+		//商品详情图片
+		.detail-img{
+			position: relative;
+			float: left;
+			width: 402px;
+			height: 580px;
+			.big-img{
+				width: 402px;
+				height: 402px;
+				border: 1px solid #cccccc;
+				img{
+					width: 400px;
+					height: 400px;
+				}
+				.magnify{
+					width: 200px;
+					height: 200px;
+					background-color: rgba(167,166,172,.3);
+					position: absolute;
+					display: none;
+					cursor: move;
+				}
+			}
+			.enlarged{
+				width: 400px;
+				height: 400px;
+				overflow: hidden;
+				position: absolute;
+				left: 465px;
+				top: 39px;
+				border: 1px solid #cccccc;
+				img{
+					position: absolute;
+				}
+			}
+			.small-img{
+				margin-top: 2px;
+				width: 400px;
+				height: 60px;
+				ul{
+					.arrow-left{
+						display: inline-block;
+						float: left;
+						width: 20px;
+						height: 60px;
+						line-height: 60px;
+					}
+					.arrow-right{
+						display: inline-block;
+						float: right;
+						width: 20px;
+						height: 60px;
+						text-align: center;
+						line-height: 60px;
+					}
+					li{
+						margin-left: 13px;
+						margin-right: 13px;
+						float: left;
+						img{
+							width: 60px;
+							height: 60px;
+						}
+					}
+				}
+			}
+		}
+		//商品详情信息
+		.detail-info{
+			margin-left: 50px;
+			padding-left: 20px;
+			padding-right: 20px;
+			float: left;
+			width: 500px;
+			height: 590px;
+			h3{
+				margin-top: 15px;
+				display: block;
+				width: 500px;
+				height: 36px;
+				font-size: 18px;
+			}
+			i{
+				margin-top: 10px;
+				margin-bottom: 10px;
+				width: 500px;
+				height: 76px;
+				background-color: #fcc062;
+				dl{
+					height: 30px;
+					line-height: 30px;
+					font-size: 12px;
+					color: #666666;
+					&:nth-child(1){
+						dt{
+							float: left;
+						}
+						dd{
+							margin-left: 10px;
+							float: left;
+							font-style: line-through;
+						}
+					}
+					&:nth-child(2){
+						dt{
+							float: left;
+						}
+						dd{
+							margin-left: 10px;
+							float: left;
+							font-size: 15px;
+							color: $mainColor;
+						}
+					}
+				}
+			}
+			.carry-info{
+				margin-top: 16px;
+				width: 500px;
+				height: 100px;
+				font-size: 12px;
+				p{
+					height: 30px;
+					line-height: 30px;
+					em{
+						margin-right: 10px;
+						padding: 3px;
+						text-align: center;
+						background-color: $mainColor;
+						color: white;
+					}
+				}
+			}
+			.carry-range{
+				margin-top: 16px;
+				width: 500px;
+				height: 40px;
+				font-size: 12px;
+				p{
+					height: 30px;
+					line-height: 30px;
+					em{
+						margin-right: 10px;
+						padding: 3px;
+						text-align: center;
+						background-color: $mainColor;
+						color: white;
+					}
+				}
+			}
+			.specification{
+				dl{
+					width: 500px;
+					height: 40px;
+					dt{
+						float: left;
+						width: 65px;
+					}
+					dd{
+						float: left;
+						width: 45px;
+						height: 25px;
+					}
+				}
+			}
+			.num{
+				dl{
+					width: 150px;
+					height: 36px;
+					dt{
+						float: left;
+						width: 65px;
+						height: 36px;
+						line-height: 36px;
+					}
+					dd{
+						float: left;
+						width: 80px;
+						.num-count{
+							float: left;
+							width: 56px;
+							input{
+								padding-left: 6px; 
+								width: 56px;
+								height: 36px;
+								border: 1px solid #a7a6ac;
+							}
+						}
+						.control-num{
+							float: right;
+							width: 16px;
+							height: 36px;
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							input{
+								display: block;
+								width: 16px;
+								height: 14px;
+								line-height: 14px;
+								text-align: center;
+								background-color: white;
+								border: 1px solid #a7a6ac;
+							}
+						}
+					}
+				}
+			}
+			.buy{
+				margin-top: 36px;
+				div{
+					float: left;
+					display: inline-block;
+					width: 210px;
+					height: 40px;
+					input{
+						margin-right: 40px;
+						width: 170px;
+						height: 40px;
+						color: white;
+						border: 1px solid #e16700;
+						border-radius: 3px;					
+						background-color: $mainColor;
+					}
+				}
+			}
+		}
+		//热卖推荐
+		.recommend{
+			margin-top: 23px;
+			float: right;
+			width: 160px;
+			height: 580px;
+			h3{
+				font-size: 16px;
+				color: $mainColor;
+				text-align: center;
+			}
+			ul{
+				@include center;
+				width: 140px;
+				height: auto;
+				li{
+					margin-top: 10px;
+					margin-bottom: 10px;
+					width: 140px;
+					height: 140px;
+					dl{
+						dt{
+							img{
+								width: 140px;
+								height: 140px; 
+							}
+						}
+						dd{
+							width: 140px;
+							height: 20px;
+							line-height: 20px;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+	.pro-info{
+		.classify{
+			float: left;
+			font-size: 13px;
+			dl{
+				width: 210px;
+				height: 130px;
+				border: 1px solid #cccccc;
+				dt{
+					padding-left: 10px;
+					height: 40px;
+					line-height: 40px;
+					background-color: #f4f4f4;
+				}
+				dd{
+					width: 210px;
+					height: 90px;
+					em{
+						padding-left: 10px;
+						display: inline-block;
+						width: 100px;
+						height: 40px;
+						font-size: 12px;
+						line-height: 40px;
+					}
+				}
+			}
+		}
+		.pro-introduce{
+			float: right;
+			width: 980px;
+			height: 130px;
+			border: 1px solid #cccccc;
+			dl{
+				dt{
+					width: 980px;
+					height: 40px;
+					border-bottom: 1px solid #cccccc;
+					i{
+						display: inline-block;
+						width: 210px;
+						height: 40px;
+						color: white;
+						text-align: center;
+						line-height: 40px;
+						background-color: $mainColor;
+					}
+				}
+				dd{
+					table{
+						width: 980px;
+						height: 90px;
+						tr{
+							height: 30px;
+							td{
+								padding-left: 10px;
+								width: 160px;
+								height: 40px;
+								font-size: 2px;
+								line-height: 40px;
+								&:nth-child(odd){
+									color: #333333;
+								}
+								&:nth-child(even){
+									color: #aaaaaa;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

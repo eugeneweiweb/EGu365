@@ -1,0 +1,190 @@
+@import "component/header.scss";
+@import "component/footer.scss";
+@import "component/reset.scss";
+$mainColor:#fd7400;
+$miWidth: 1220px;
+$maWidth: 1348px;
+@mixin center{
+	margin-left: auto;
+	margin-right: auto;
+}
+@mixin mainPadding{
+	padding-left: 65px;
+	padding-right: 65px;
+}
+@mixin mainMargin{
+	margin-left: 65px;
+	margin-right: 65px;
+}
+//谷穗卡、中秋佳节套餐礼券
+.ear-card, .mid-autumn{
+	@include center;
+	margin-top: 45px;
+	width: $miWidth;
+	height: 615px;
+	header{
+		margin-bottom: 60px;
+		float: left;
+		width: $miWidth;
+		height: 50px;
+		border-bottom: 1px solid #abcd05;
+		span{
+			display: inline-block;
+			width: 210px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			font-size: 16px;
+			color: white;
+			background-color: #abcd05;
+		}
+	}
+	article{
+		//卡劵图片
+		.card-img{
+			float: left;
+			width: 500px;
+			height: 500px;
+			font-size: 25px;
+			text-align: center;
+			color: #abcd05;
+			border: 1px solid #cccccc;
+			img{
+				width: 450px;
+				height: 450px;
+			}
+		}
+		//卡劵信息
+		.card-info{
+			float: right;
+			width: 660px;
+			height: 500px;
+			font-size: 12px;
+			h3{
+				font-size: 30px;
+				color: #abcd05;
+				font-weight: 500;
+			}
+			.card-class, .limit{
+				dl{
+					display: flex;
+					align-items: center;
+					width: 660px;
+					height: 50px;
+					dt{
+						float: left;
+						width: 85px;
+						height: 26px;
+						font-weight: 600;
+						line-height: 26px;
+					}
+					dd{
+						margin-left: 10px;
+						margin-right: 10px;
+						float: left;
+						width: 100px;
+						height: 26px;
+						text-align: center;
+						line-height: 26px;
+						border: 1px solid #cccccc;
+					}
+				}
+			}
+			.num{
+				dl{
+					display: flex;
+					align-items: center;
+					width: 660px;
+					height: 50px;
+					font-size: 12px;
+					dt{
+						float: left;
+						width: 85px;
+						height: 26px;
+						font-weight: 600;
+						line-height: 26px;
+					}
+					dd{
+						input{
+							margin-left: 10px;
+							width: 20px;
+							height: 20px;
+							line-height: 20px;
+							text-align: center;
+							&:nth-child(2){
+								width: 50px;
+							}
+						}
+					}
+				}
+			}
+			.amount{
+				dl{
+					display: flex;
+					align-items: center;
+					width: 660px;
+					height: 50px;
+					dt{
+						float: left;
+						width: 85px;
+						height: 26px;
+						font-weight: 600;
+						line-height: 26px;
+					}
+					dd{
+						margin-left: 10px;
+						margin-right: 10px;
+						float: left;
+						width: 100px;
+						height: 26px;
+						font-size: 20px;
+						color: $mainColor;
+						line-height: 26px;
+					}
+				}
+			}
+			.buy{
+				input{
+					width: 100px;
+					height: 30px;
+					line-height: 30px;
+					text-align: center;
+					border-radius: 5px;
+					border: none;
+					color: white;
+					background-color: $mainColor;
+				}
+			}
+		}
+	}
+}
+	//套餐详情
+.combo-detail{
+	@include center;
+	margin-top: 25px;
+	width: $miWidth;
+	header{
+		height: 36px;
+		border-bottom: 1px solid #abcd05;
+		span{
+			display: inline-block;
+			width: 90px;
+			height: 36px;
+			line-height: 36px;
+			text-align: center;
+			color: white;
+			background-color: #abcd05;
+		}
+	}
+	article{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		img{
+			width: 1030px;
+		}
+	}
+}
+
+
+

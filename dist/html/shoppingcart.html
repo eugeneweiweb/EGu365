@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<link rel="stylesheet" type="text/css" href="/css/shoppingcart.css">
+</head>
+<body>
+	<header id="header"></header>
+	<div id="container">
+		<div id="shopList" class="shop-list">
+			<header>
+				<table class="header-table">
+					<tbody>
+						<tr>
+							<td id="allSelect"><input type="checkbox" name="checkall">全选</td>
+							<td>ID</td>
+							<!-- 间隔作用 -->
+							<td></td>
+							<td>单价</td>
+							<td>数量</td>
+							<td>合计</td>
+							<td>操作</td>
+						</tr>
+					</tbody>
+				</table>
+			</header>
+			<table id="shopTable" class="shop-table">
+				<tbody id="tbody"></tbody>
+				<script type="text/html" id="trtemp">
+					{{each tr item i}}
+						<tr>
+							<td id="select">
+								<input type="checkbox" name="checkshop">
+							</td>
+							<td><em id="Id">{{tr[i].id}}</em></td>
+							<td><img src="{{tr[i].img}}"></td>
+							<td>{{tr[i].name}}</td>
+							<td>￥{{tr[i].price}}</td>
+							<td>
+								<input type="button" name="sub" value="-">
+								<input type="text" name="count" value="{{tr[i].num}}">
+								<input type="button" name="add" value="+">
+							</td>
+							<td>￥{{tr[i].price*tr[i].num}}</td>
+							<td><a id="delBtn" href="javascript:;">删除</a></td>
+						</tr>
+					{{/each}}
+				</script>
+			</table>
+			<footer>
+				<table>
+					<tbody>
+						<tr>
+							<td>商品总价</td>
+							<td id="accounts">￥<em>0</em></td>
+							<td><input type="button" name="accounts" value="去结算"></td>
+						</tr>
+					</tbody>
+				</table>
+			</footer>
+		</div>
+	</div>
+	<footer id="footer"></footer>
+	<script type="text/javascript" src="/libs/require/require.js" data-main="/js/shoppingcart.js"></script>
+</body>
+</html>

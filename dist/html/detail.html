@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品详情</title>
+	<link rel="stylesheet" type="text/css" href="/css/detail.css">
+</head>
+<body>
+	<header id="header"></header>
+	<div id="container" class="container"></div>
+	<script type="text/html" id="detail-template">
+		<div id="proDetail" class="pro-detail">
+			<!-- id -->
+			<div id="proId">{{product.id}}</div>
+			<!-- 商品详情图片 -->
+			<div id="detailImg" class="detail-img">
+				<div id="bigImg" class="big-img">
+					<img src="{{product.img}}">
+					<span id="magnify" class="magnify"></span>
+				</div>
+				<div id="enlarged" class="enlarged">
+					<img src="{{product.img}}">
+				</div>
+				<div id="smallImg" class="small-img">
+					<ul>
+						<span class="arrow-left"><img src="/images/pro-cp-arrow-lf.jpg"></span>
+						<li id="img1"><img src="{{product.img1}}"></li>
+						<li id="img2"><img src="{{product.img2}}"></li>
+						<li id="img3"><img src="{{product.img3}}"></li>
+						<li id="img4"><img src="{{product.img4}}"></li>
+						<span class="arrow-right"><img src="/images/pro-cp-arrow-ri.jpg"></span>
+					</ul>
+				</div>
+			</div>
+			<!-- 商品详情信息 -->
+			<div id="detailInfo" class="detail-info">
+				<h3 id="proname">{{product.proname}}</h3>
+				<i>
+					<dl>
+						<dt>市场价</dt>
+						<dd>￥{{product.bazaarprice}}</dd>
+					</dl>
+					<dl>
+						<dt>商城价</dt>
+						<dd>￥<em id="bazaarprice">{{product.marketprice}}</em></dd>
+					</dl>
+				</i>
+				<div class="carry-info">
+					<p><em>配送</em>16：00前完成订单,预计明日11：00送达,生鲜商品仅限深圳!</p>
+					<p><em>运费</em>深圳市内每单物流费8元起，满199元免物流!</p>
+					<p><em>提示</em>产品图片及描述内容仅做参考,请您以收到的商品实物为准！谢谢</p>
+				</div>
+				<div class="carry-range">
+					<p><em>配送范围</em>广东深圳市</p>
+				</div>
+				<div class="specification">
+					<dl>
+						<dt>规格：</dt>
+						<dd>1kg</dd>
+					</dl>
+				</div>
+				<div id="num" class="num">
+					<dl>
+						<dt>数量：</dt>
+						<dd>
+							<div id="numCount" class="num-count">
+								<input type="text" name="count" value="1">
+							</div>
+							<div class="control-num">
+								<input type="button" name="add" value="+">
+								<input type="button" name="sub" value="-">
+							</div>
+						</dd>
+					</dl>
+				</div>
+				<div id="buy" class="buy">
+					<div id="butNow"><input type="button" name="buyNow" value="立即购买"></div>
+					<div id="addToCart"><input type="button" name="addToCart" value="加入购物车"></div>
+				</div>
+			</div>
+			<div id="recommend" class="recommend">
+				<h3>-----  热卖推荐  -----</h3>
+				<ul>
+					<li>
+						<dl>
+							<dt><img src="/images/201811022041446002.jpg"></dt>
+							<dd>￥50</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><img src="/images/201808311735180019.jpg"></dt>
+							<dd>￥75</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><img src="/images/201810101624109040.jpg"></dt>
+							<dd>￥85</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="proInfo" class="pro-info">
+			<div id="classify" class="classify">
+				<dl>
+					<dt>相关分类</dt>
+					<dd>
+						<em>新鲜水果</em>
+						<em>水果</em>
+						<em>国产水果</em>
+						<em>其他水果类</em>
+					</dd>
+				</dl>
+			</div>
+			<div id="proIntroduce" class="pro-introduce">
+				<dl>
+					<dt>
+						<i><b>商品介绍</b></i>
+					</dt>
+					<dd>
+						<table>
+							<tr>
+								<td>保质期：</td>
+								<td>见包装</td>
+								<td>存储条件：</td>
+								<td>冷藏</td>
+								<td>毛重：</td>
+								<td>1kg</td>
+							</tr>
+							<tr>
+								<td>销售单位：</td>
+								<td>盒</td>
+								<td>产地：</td>
+								<td>新疆</td>
+								<td>规格：</td>
+								<td>1kg</td>
+							</tr>
+						</table>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</script>
+	<footer id="footer"></footer>
+	<script type="text/javascript" src="/libs/require/require.js" data-main="/js/detail.js"></script>
+</body>
+</html>
