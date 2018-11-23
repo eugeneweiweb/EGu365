@@ -55,7 +55,7 @@ gulp.task("libs", function(){
 })
 
 gulp.task("img", function(){
-	gulp.src("app/images/**/*")
+	gulp.src("app/images/*")
 		.pipe(gulp.dest("dist/images"))
 		.pipe(connect.reload());
 })

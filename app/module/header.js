@@ -72,9 +72,12 @@ define(["jquery"],function($){
 
 	Header.prototype.cookie=function(){
 		var $username=$.cookie('username');
-		$("#welcome").text(function(){
-			return "欢迎您，"+$username;
-		});
+		if($username!=undefined){
+			$("#welcome").text(function(){
+				return "欢迎您，"+$username;
+			});
+		}
+		
 		$("#unlog").click(function(){
 			console.log(111);
 			$.cookie('login','',{expires:-1,path:"/"});

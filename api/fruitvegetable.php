@@ -2,23 +2,31 @@
     include("../config/connect.php");
     header("Access-Control-Allow-Origin:*");
 
-    $sql="select * from prolist";
+    $pageIndex=$_POST["pageIndex"];
+    $count=$_POST["count"];
+
+    $sql1="select * from prolist";
+    $res1=mysql_query($sql);
+    $rows=mysql_num_rows($sql1);
+    $allPage=ceil($rows/$count);
+
+    $start=$pageindex*$count;
+    $sql="select * from question limit $start,$count";
 
     $res=mysql_query($sql);
 
     $arr=array();
-
     while($row=mysql_fetch_assoc($res)){
         array_push($arr,$row);
     }
-    $product["product"] = $arr;
 
-    if($product["product"]){
-		$product["code"] = 1;
-	}else{
-		$product["code"] = 0;
-	}
+    $data=array(
+        "code"=>1,
+        "allPage"+>$allPage,
+        "data"=>$arr
+    );
 
-    echo json_encode($product);
+
+    echo json_encode($data);
     mysql_close();
 ?>

@@ -31,7 +31,7 @@ $maWidth: 1348px;
 				line-height: 30px;
 			}
 			&:nth-child(2){
-				color: 
+				color:
 				#333333;
 				font-size: 12px;
 				line-height: 30px;
@@ -84,7 +84,7 @@ $maWidth: 1348px;
 						position: absolute;
 						top: 8px;
 						left: 2px;
-					}	
+					}
 				}
 				.unlog{
 					a{
@@ -105,7 +105,7 @@ $maWidth: 1348px;
 		overflow: hidden;
 		img{
 			height: 120px;
-			margin: 0 -100%; 
+			margin: 0 -100%;
 		}
 	}
 	//logo与搜索栏
@@ -171,7 +171,7 @@ $maWidth: 1348px;
 								font-size: 12px;
 							}
 						}
-						
+
 					}
 				}
 			}
@@ -285,43 +285,43 @@ $maWidth: 1348px;
 							span{
 								background: url(/images/menu_bg.png) no-repeat 3px 0px;
 							}
-							
+
 						}
 						&:nth-child(2){
 							span{
 								background: url(/images/menu_bg.png) no-repeat -30px 0px;
 							}
-							
+
 						}
 						&:nth-child(3){
 							span{
 								background: url(/images/menu_bg.png) no-repeat -62px 0px;
 							}
-							
+
 						}
 						&:nth-child(4){
 							span{
 								background: url(/images/menu_bg.png) no-repeat -92px 0px;
 							}
-							
+
 						}
 						&:nth-child(5){
 							span{
 								background: url(/images/menu_bg.png) no-repeat -128px 0px;
 							}
-							
+
 						}
 						&:nth-child(6){
 							span{
 								background: url(/images/menu_bg.png) no-repeat -158px 0px;
 							}
-							
+
 						}
 						&:nth-child(7){
 							span{
 								background: url(/images/menu_bg.png) no-repeat -185px 0px;
 							}
-							
+
 						}
 
 					}
@@ -366,13 +366,13 @@ $maWidth: 1348px;
 	}
 }
 
-
+//banner
 .header-banner{
 	position: relative;
 	width: 100%;
 	height: 480px;
 	ul{
-		width: $maWidth;	
+		width: $maWidth;
 		height: 480px;
 		overflow: hidden;
 		li{
@@ -418,24 +418,34 @@ $maWidth: 1348px;
 	}
 	.goprev{
 			position: absolute;
-			top: 200px;
-			left: 50px;
+			top: 175px;
+			left: 18px;
 			display: block;
 			img{
-				width: 32px;
-				height: 50px;
-				opacity: .5;
+				width: 64px;
+				height: 100px;
+				opacity: 0;
+			}
+			&:hover{
+				img{
+					opacity: 0.3;
+				}
 			}
 	}
 	.gonext{
 			position: absolute;
-			top: 200px;
-			right: 50px;
+			top: 175px;
+			right: 18px;
 			display: block;
 			img{
-				width: 32px;
-				height: 50px;
-				opacity: .5;
+				width: 64px;
+				height: 100px;
+				opacity: 0;
+			}
+			&:hover{
+				img{
+					opacity: 0.3;
+				}
 			}
 	}
 }

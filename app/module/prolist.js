@@ -1,12 +1,72 @@
-define(["jquery","header"],function($,header){
+define(["jquery","template"],function($,template){
 	function Prolist(){}
 
-	Prolist.prototype.init=function(){
+
+	Prolist.prototype.ajax=function(phpname){
+
+		var count=5;//每页的数据条数
+		var index=1;//当前页
+		var allPage;//总页数
+
+		//页面一加载就获取第一页的数据
+		getData(1);
+
+		$("#pageBtn").on("click","input",function(){
+			//console.log($(this).attr("class"));
+			if($(this).attr("class")==="homepage"){
+				//设置index为1，将页面跳转到第一页
+				index=1;
+				getData(index);
+			}
+			if($(this).attr("class")==="prevpage"){
+				//当index为1时，就在当前页，否则index--，页面跳转到上一页
+				if(index===1) return;
+				else getData(--index);
+			}
+			if($(this).attr("class")==="nextpage"){
+				//当index为总页面数时，index不再增加就在最后一页，否则index++，跳转到下一页
+				if(index===allPage) return;
+				else getData(++index);
+			}
+			if($(this).attr("class")==="endpage"){
+				index=allPage;
+				getData(index);
+			}
+		});
+
+		function getData(pageIndex){
+			$.ajax({
+				method: "post",
+				data: {pageIndex:pageIndex,count:count},
+				dataType: "json",
+				url: "http://localhost/EGu365/api/"+phpname+".php",
+				success: function(res){
+					//console.log(res);
+					allPage=res.allPage;
+
+					//console.log(res.product);
+					var html=template("pro-template",{products: res.data});
+					//console.log(html);
+					$("#prolist").html(html);
+					$("#prolist li .proId").css({"display":"none"});
+					$("#pageBtn i em").html(index);
+					$("#pageBtn i span").html(allPage);
+				}
+			});
+		}
+
+	}
+
+
+
+	Prolist.prototype.addToCart=function(){
+
+		//绑定加入购物车事件
 		$("#prolist").on("click",".to-cart input",function(e){
 			var arrcookie=new Array();
 			var arrold=new Array();
 			var arrnew=new Array();
-			
+
 			var $proid=$(this).parent().parent().find(".proId").html(),
 				$img=$(this).parent().parent().find(".proImg a img").attr("src"),
 				$name=$(this).parent().parent().find(".proName").html(),
@@ -73,8 +133,33 @@ define(["jquery","header"],function($,header){
 				header.cookie();
 				header.shopNum();
 			});
+
+
+			//+1动画
+			var _top=6;
+			var _opacity=100;
+			//创建+1span让其进行向下移动
+			var span=document.createElement("span");
+			span.innerHTML="+1";
+			$(this).parent().append(span);
+			//初始化+1span的位置
+			span.style.top=_top+"px";
+
+			var timer=setInterval(function(){
+				_top++;
+				span.style.top=_top+"px";
+				if(_top>=30){
+					clearInterval(timer);
+					span.remove();
+				}
+			},30);
+
+
+			//抛物线
+			
 		});
 	};
-	
+
+
 	return new Prolist();
 });

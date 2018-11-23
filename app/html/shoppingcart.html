@@ -38,11 +38,11 @@
 							<td>{{tr[i].name}}</td>
 							<td>￥{{tr[i].price}}</td>
 							<td>
-								<input type="button" name="sub" value="-">
+								<input class="sub-btn" type="button" name="sub" value="-">
 								<input type="text" name="count" value="{{tr[i].num}}">
-								<input type="button" name="add" value="+">
+								<input class="add-btn" type="button" name="add" value="+">
 							</td>
-							<td>￥{{tr[i].price*tr[i].num}}</td>
+							<td>￥<em id="singleAccount">{{tr[i].price*tr[i].num}}</em></td>
 							<td><a id="delBtn" href="javascript:;">删除</a></td>
 						</tr>
 					{{/each}}

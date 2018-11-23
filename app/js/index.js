@@ -8,25 +8,23 @@ require(["config"],function(){
 		});
 		$("#footer").load("/html/component/footer.html");
 		$("#fruitVegetable").load("/html/component/indexList1.html");
-		
-		var imgs=$("#thisWeek div artical ul li");
-		var tabimgs=$("#thisWeek div aside ul li");
-		var index=0;
-		var flag=false;
 
-		tabimgs.click(function(){
-			//console.log(111);
-			if(!flag){
-				//console.log(111);
-				flag=true;
+		//本周爆品
+		function thisWeek(){
+			var imgs=$("#thisWeek div artical ul li");
+			var tabimgs=$("#thisWeek div aside ul li");
+			var index=0;
+			var flag=false;
+
+			tabimgs.mouseenter(function(){
+				
 				$(this).addClass("ac").siblings().removeClass("ac");
-				imgs.eq(index).fadeOut();
+				imgs.eq(index).stop().fadeOut();
 				index=$(this).index();
-				imgs.eq(index).fadeIn(function(){
-					flag=false;
-				});
-			}
-			
-		});
+				imgs.eq(index).stop().fadeIn();
+				
+			});
+		}
+		thisWeek();
 	});
 });

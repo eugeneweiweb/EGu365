@@ -12,12 +12,15 @@ require(["config"],function(){
 			var tbody=$("#shopTable tbody");
 
 			var str=$.cookie('cart');
-			var json=JSON.parse(str);
-			//console.log(json);
-			//console.log(json.length);
-			var trhtml=template("trtemp",{tr: json});
-			//console.log(trhtml);
-			$("#tbody").html(trhtml);
+			if(str!=undefined){
+				var json=JSON.parse(str);
+				//console.log(json);
+				//console.log(json.length);
+				var trhtml=template("trtemp",{tr: json});
+				//console.log(trhtml);
+				$("#tbody").html(trhtml);
+			}
+			
 		}
 		
 		prodisplay();
@@ -53,6 +56,8 @@ require(["config"],function(){
 					header.cookie();
 					header.shopNum();
 				});
+				selectctrl();
+				account();
 			});
 		}
 
@@ -83,16 +88,7 @@ require(["config"],function(){
 					scount=0;
 				}
 
-				//总价计算
-				var accounts=0;
-				for(var i=0; i<json.length; i++){
-					//console.log(json[i].price);
-					if(selects[i].checked==true){
-						accounts=accounts+(json[i].price*json[i].num);
-					}
-				}
-
-				$("#accounts em").html(accounts);
+				account();
 			}
 
 			//所有单选绑事件
@@ -105,23 +101,93 @@ require(["config"],function(){
 						allSelect.checked=false;
 					}
 
-					//总价计算
-					var accounts=0;
-					for(var i=0; i<json.length; i++){
-						//console.log(json[i].price);
-						if(selects[i].checked==true){
-							accounts=accounts+(json[i].price*json[i].num);
-						}
-					}
-
-					$("#accounts em").html(accounts);
-
+					account();
 				}
 			}
 		}
 
 		selectctrl();
 
+		//总价计算
+		function account(){
+			//console.log("account");
+			var accounts=0;
+			var selects=$("#tbody #select input");
+			var str=$.cookie('cart');
+			var json=JSON.parse(str);
+			for(var i=0; i<json.length; i++){
+				//console.log(json[i].price);
+				if(selects[i].checked==true){
+					accounts=accounts+(json[i].price*json[i].num);
+					//console.log(json[i].num);
+					//console.log(accounts);
+				}
+			}
 
+			$("#accounts em").html(accounts);
+		}
+
+		account();
+
+		//加减按钮
+		function proNumCtrl(){
+			var tbody=$("#tbody");
+			tbody.on("click",".add-btn",function(e){
+				var pronum=$(this).prev().val();
+				var changeId=$(this).parent().parent().find("#Id").html();
+				var singleAccount=$(this).parent().parent().find("#singleAccount");
+				var str=$.cookie('cart');
+				var json=JSON.parse(str);
+				pronum++;
+				$(this).prev().val(pronum);
+				for(var i=0; i<json.length; i++){
+					if(json[i].id==changeId){
+						json[i].num=pronum;
+						singleAccount.html(pronum*json[i].price);
+						break;
+					}
+				}
+				var cookie=JSON.stringify(json);
+				$.cookie('cart',cookie,{path:'/',expires:1});
+				
+				selectctrl();
+				account();
+			});
+
+
+			tbody.on("click",".sub-btn",function(e){
+				var pronum=$(this).next().val();
+				var changeId=$(this).parent().parent().find("#Id").html();
+				var singleAccount=$(this).parent().parent().find("#singleAccount");
+				var str=$.cookie('cart');
+				var json=JSON.parse(str);
+				//console.log(pronum);
+				if(pronum==0){
+					pronum=0;
+				}else{
+					pronum--;
+					//console.log("++");
+					//console.log(pronum);
+					$(this).next().val(pronum);
+
+					for(var i=0; i<json.length; i++){
+						if(json[i].id==changeId){
+							json[i].num=pronum;
+							//console.log(json[i]);
+							singleAccount.html(pronum*json[i].price);
+							break;
+						}
+					}
+					
+					var cookie=JSON.stringify(json);
+					$.cookie('cart',cookie,{path:'/',expires:1});
+					
+					selectctrl();
+					account();
+				}
+			});
+
+		}
+		proNumCtrl();
 	});
 })

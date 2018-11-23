@@ -9,7 +9,8 @@ require.config({
 		"reset":"module/reset",
 		"template":"libs/template-web",
 		"cookie":"libs/jquery.cookie",
-		"prolist":"module/prolist"
+		"prolist":"module/prolist",
+		"prolist2":"module/prolist2"
 	},
 
 	shim:{
