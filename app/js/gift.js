@@ -5,6 +5,7 @@ require(["config"],function(){
 			header.banner();
 			header.cookie();
 			header.shopNum();
+			header.fixTop();
 		});
 		$("#footer").load("/html/component/footer.html");
 	});

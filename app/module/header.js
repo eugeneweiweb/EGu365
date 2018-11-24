@@ -106,6 +106,22 @@ define(["jquery"],function($){
 			$("#shoppingCount").html(count);
 		}
 		
-	}
+	};
+
+	//吸顶效果
+	Header.prototype.fixTop=function(){
+		var search=$("#logoSearch"),
+			nav=$("#nav");
+		$(window).scroll(function(){
+			if($(window).scrollTop()>200){
+				search.css({"position":"fixed","z-index":8,"top":5});
+				nav.css({"position":"fixed","z-index":8,"top":95});
+			}else{
+				search.css({"position":"static","z-index":8});
+				nav.css({"position":"static","z-index":8});
+			}
+		});
+	};
+
 	return new Header();
 });
