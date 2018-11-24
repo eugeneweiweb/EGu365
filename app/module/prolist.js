@@ -1,4 +1,4 @@
-define(["jquery","template"],function($,template){
+define(["jquery","template","header"],function($,template,header){
 	function Prolist(){}
 
 
@@ -12,7 +12,6 @@ define(["jquery","template"],function($,template){
 		getData(1);
 
 		$("#pageBtn").on("click","input",function(){
-			//console.log($(this).attr("class"));
 			if($(this).attr("class")==="homepage"){
 				//设置index为1，将页面跳转到第一页
 				index=1;
@@ -66,24 +65,23 @@ define(["jquery","template"],function($,template){
 			var arrcookie=new Array();
 			var arrold=new Array();
 			var arrnew=new Array();
-
+				//商品ID
 			var $proid=$(this).parent().parent().find(".proId").html(),
+				//商品图片链接
 				$img=$(this).parent().parent().find(".proImg a img").attr("src"),
+				//商品名字
 				$name=$(this).parent().parent().find(".proName").html(),
+				//商品信息
 				$info=$(this).parent().parent().find(".proInfo").html(),
-				$price=$(this).parent().parent().find(".bazaarprice").html();
-			//console.log($proid);
-			//console.log(typeof($proid));
+				//商品价格
+				$price=$(this).parent().parent().find(".bazprice").html();
+
 			var proid=parseInt($proid);
-			//console.log(proid);
 
 			var cookieold=$.cookie('cart');
-
+			//如果cookie cart存在转换cookie cart
 			if(cookieold!=undefined){
 				var jsonold=JSON.parse(cookieold);
-				//console.log("!!!")
-				//console.log(jsonold);
-				//console.log(jsonold.length);
 				for(var i=0; i<jsonold.length; i++){
 					var objold={
 						id: jsonold[i].id,
@@ -96,20 +94,14 @@ define(["jquery","template"],function($,template){
 					arrold.push(objold);
 				}
 			}
-
+			//判断cart里是否已有相同商品
 			for(var j=0; j<arrold.length; j++){
 				if(arrold[j].id==proid){
-					//console.log("arrold:"+arrold);
-					//console.log("arrold["+j+"]num:"+arrold[j].num);
 					arrold[j].num++;
-					//console.log("added:"+arrold[j].num);
-					//console.log("j:"+j);
 					break;
 				}
 			}
 			if(j>=arrold.length){
-				//console.log("不一样");
-				//console.log("arrcookie.length:"+arrcookie.length);
 				var objnow={
 					id: $proid,
 					img: $img,
@@ -119,20 +111,13 @@ define(["jquery","template"],function($,template){
 					num: 1
 				};
 				arrnew.push(objnow);
-				//console.log("nosame");
-				//console.log(arr);
 				arrold=arrold.concat(arrnew);
 			}
-			//console.log("concat前arrcookie:"+arrcookie);
 			arrcookie=arrcookie.concat(arrold);
 			var str=JSON.stringify(arrcookie);
-			//console.log("str:"+str);
 			$.cookie('cart',str,{path:'/',expires:1});
-			$("#header").load("/html/component/header.html #headerTop",function(){
-				header.nav();
-				header.cookie();
-				header.shopNum();
-			});
+			//更新header商品数量
+			header.shopNum();
 
 
 			//+1动画

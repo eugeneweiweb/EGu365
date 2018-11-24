@@ -79,7 +79,7 @@ define(["jquery"],function($){
 		}
 		
 		$("#unlog").click(function(){
-			console.log(111);
+			//console.log(111);
 			$.cookie('login','',{expires:-1,path:"/"});
 			$.cookie('username','',{expires:-1,path:"/"});
 			$("#log,#reg").css({"display":"block"});
@@ -98,8 +98,12 @@ define(["jquery"],function($){
 		var str=$.cookie('cart');
 		if(str!=undefined){
 			var json=JSON.parse(str);
-			var num=json.length;
-			$("#shoppingCount").html(num);
+			//商品总数量
+			var count=json.reduce(function(count,curr){
+				//console.log(curr.num);
+				return count+curr.num;
+			},0);
+			$("#shoppingCount").html(count);
 		}
 		
 	}

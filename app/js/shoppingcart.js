@@ -14,10 +14,7 @@ require(["config"],function(){
 			var str=$.cookie('cart');
 			if(str!=undefined){
 				var json=JSON.parse(str);
-				//console.log(json);
-				//console.log(json.length);
 				var trhtml=template("trtemp",{tr: json});
-				//console.log(trhtml);
 				$("#tbody").html(trhtml);
 			}
 			
@@ -32,12 +29,9 @@ require(["config"],function(){
 
 				var delId=$(this).parent().parent().find("#Id").html();
 				delId=parseInt(delId);
-				//console.log(delId);
-				//console.log(typeof(delId));
 				var toDel=$.cookie('cart');
 				var jsonCart=JSON.parse(toDel);
-				//console.log(jsonCart.length);
-				//console.log("todeljson:"+jsonCart);
+				//查找与删除商品id相同的对象的index并删除该对象
 				for(var i=0; i<jsonCart.length; i++){
 					if(jsonCart[i].id==delId){
 						console.log(jsonCart[i]);
@@ -45,17 +39,10 @@ require(["config"],function(){
 					}
 				}
 				
-				//console.log(m);
-				//console.log(jsonCart);
 				var deled=JSON.stringify(jsonCart);
-				//console.log("deled:"+deled);
 				$.cookie('cart',deled,{path:'/',expires:1});
 				prodisplay();
-				$("#header").load("/html/component/header.html #headerTop",function(){
-					header.nav();
-					header.cookie();
-					header.shopNum();
-				});
+				header.shopNum();
 				selectctrl();
 				account();
 			});
@@ -69,9 +56,7 @@ require(["config"],function(){
 			//全选反选
 			var scount=0;//单选计数
 			var allSelect=$("#allSelect input")[0];
-			//console.log(allSelect[0]);
 			var selects=$("#tbody #select input");
-			//console.log(selects);
 
 			//全选绑事件
 			allSelect.onchange=function(){
@@ -81,7 +66,6 @@ require(["config"],function(){
 					}
 					scount=selects.length;
 				}else{
-					//console.log("uncheck");
 					for(var j=0; j<selects.length; j++){
 						selects[j].checked=false;
 					}
@@ -110,17 +94,14 @@ require(["config"],function(){
 
 		//总价计算
 		function account(){
-			//console.log("account");
 			var accounts=0;
 			var selects=$("#tbody #select input");
 			var str=$.cookie('cart');
 			var json=JSON.parse(str);
+			//遍历json计算每种商品的合计之和
 			for(var i=0; i<json.length; i++){
-				//console.log(json[i].price);
 				if(selects[i].checked==true){
 					accounts=accounts+(json[i].price*json[i].num);
-					//console.log(json[i].num);
-					//console.log(accounts);
 				}
 			}
 
@@ -138,8 +119,11 @@ require(["config"],function(){
 				var singleAccount=$(this).parent().parent().find("#singleAccount");
 				var str=$.cookie('cart');
 				var json=JSON.parse(str);
+
+				//查找id相同的商品并增加该商品的数量
 				pronum++;
 				$(this).prev().val(pronum);
+				
 				for(var i=0; i<json.length; i++){
 					if(json[i].id==changeId){
 						json[i].num=pronum;
@@ -150,6 +134,7 @@ require(["config"],function(){
 				var cookie=JSON.stringify(json);
 				$.cookie('cart',cookie,{path:'/',expires:1});
 				
+				header.shopNum();
 				selectctrl();
 				account();
 			});
@@ -161,19 +146,17 @@ require(["config"],function(){
 				var singleAccount=$(this).parent().parent().find("#singleAccount");
 				var str=$.cookie('cart');
 				var json=JSON.parse(str);
-				//console.log(pronum);
 				if(pronum==0){
 					pronum=0;
 				}else{
+					
+					//查找id相同的商品并减少该商品的数量
 					pronum--;
-					//console.log("++");
-					//console.log(pronum);
 					$(this).next().val(pronum);
 
 					for(var i=0; i<json.length; i++){
 						if(json[i].id==changeId){
 							json[i].num=pronum;
-							//console.log(json[i]);
 							singleAccount.html(pronum*json[i].price);
 							break;
 						}
@@ -182,6 +165,7 @@ require(["config"],function(){
 					var cookie=JSON.stringify(json);
 					$.cookie('cart',cookie,{path:'/',expires:1});
 					
+					header.shopNum();
 					selectctrl();
 					account();
 				}
